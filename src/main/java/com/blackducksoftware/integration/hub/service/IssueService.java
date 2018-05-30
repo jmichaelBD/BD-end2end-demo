@@ -24,9 +24,12 @@
 package com.blackducksoftware.integration.hub.service;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import com.blackducksoftware.integration.exception.IntegrationException;
 import com.blackducksoftware.integration.hub.api.generated.view.IssueView;
+import com.blackducksoftware.integration.hub.api.generated.view.VersionBomComponentView;
 import com.blackducksoftware.integration.hub.service.model.RequestFactory;
 import com.blackducksoftware.integration.rest.HttpMethod;
 import com.blackducksoftware.integration.rest.request.BodyContent;
@@ -36,6 +39,12 @@ import com.blackducksoftware.integration.rest.request.Response;
 public class IssueService extends DataService {
     public IssueService(final HubService hubService) {
         super(hubService);
+    }
+
+    public List<IssueView> getIssues(final VersionBomComponentView versionBomComponentView) throws IntegrationException {
+        // TODO supported in Hub 4.7.0. Once that Hub version is released, it should be a link multiple response.
+        final IssueView issueView = hubService.getResponse(versionBomComponentView, VersionBomComponentView.COMPONENT_ISSUES_LINK_RESPONSE);
+        return Arrays.asList(issueView);
     }
 
     public String createIssue(final IssueView issueItem, final String uri) throws IntegrationException {
