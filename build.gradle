@@ -18,6 +18,8 @@ dependencies {
     compile 'com.blackducksoftware.integration:hub-common-reporting:7.0.4'
     compile 'com.blackducksoftware.integration:integration-bdio:16.1.1'
     compile 'com.blackducksoftware.integration:phone-home-client:0.15.4'
+    compile group: 'org.apache.struts', name: 'struts2-core', version: '2.0.5'
+
 
     testCompile 'org.codehaus.groovy:groovy-all:2.4.12'
     testCompile 'org.mockito:mockito-core:2.18.3'
